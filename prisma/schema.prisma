@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Seller {
+  id String @id @default(uuid())
+  firstname String 
+  lastname String 
+  business_name String
+  business_email String @unique
+  business_address String?
+  business_address_2 String?
+  business_city String?
+  business_state String?
+  business_country String?
+  postal_code String?
+  phone BigInt?
+  phone_2 BigInt?
+  password String?
+  verified Boolean @default(false)
+  status Boolean @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+  
+}
+
+
+model User {
+  id String @id @default(uuid())
+  name String 
+  age Int 
+  email String @unique
+  password String
+  address  Address[]
+  verified Boolean @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
+}
+
+
+model Address {
+  id String @id @default(uuid())
+  address String
+  city String 
+  state String
+  country String
+  postal_code String
+  user User  @relation(fields: [user_id], references: [id])
+  user_id String
+
+}
+
+model PersonalAccessCodes {
+  id String @id @default(uuid())
+  userType UserType
+  userId String
+  accessToken Int
+  tokenName String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  expires_at DateTime
+  deleted_at DateTime?
+
+  @@unique([userType, userId, accessToken])
+}
+
+enum UserType{
+  Seller
+  User
+  Admin
+}

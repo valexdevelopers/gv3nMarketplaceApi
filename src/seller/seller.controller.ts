@@ -13,24 +13,24 @@ export class SellerController {
   ) {}
 
 	@Post('register')
-	async create(@Body() createSellerDto: CreateSellerDto, @Req() request: Request, @Res() response: Response) {
-		try{
-			const newSellerToken = await this.sellerService.create(createSellerDto);
-			// const sendVerificationMail = this.sellerService.verificationMail();
-			return response.status(201).json({
-			status: 'ok!',
-			message: 'Your seller account has been created',
-			token: newSellerToken
-			});
+		async create(@Body() createSellerDto: CreateSellerDto, @Req() request: Request, @Res() response: Response) {
+			try{
+				const newSellerToken = await this.sellerService.create(createSellerDto);
+				// const sendVerificationMail = this.sellerService.verificationMail();
+				return response.status(201).json({
+				status: 'ok!',
+				message: 'Your seller account has been created',
+				token: newSellerToken
+				});
 
-		}catch(error){
-			return response.status(error.status).json({
-				status: 'error',
-				message: error.message,
-				error: error.response.error,
-				cause: error.name
-			});
-		}
+			}catch(error){
+				return response.status(error.status).json({
+					status: 'error',
+					message: error.message,
+					error: error.response.error,
+					cause: error.name
+				});
+			}
 	}
 
 

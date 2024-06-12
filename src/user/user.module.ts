@@ -5,7 +5,6 @@ import  {DatabaseService} from '../database/database.service';
 import { JwtModule } from '@nestjs/jwt';
 import {JwtStrategyUser } from "../jwt/jwtStrategy.user"; 
 import { MailerModule } from '@nestjs-modules/mailer';
-// import { TwilioModule } from 'nestjs-twilio';
 import { SendVerificationEmail } from '../emails/verification.mail';
 
 @Module({
@@ -29,10 +28,7 @@ import { SendVerificationEmail } from '../emails/verification.mail';
 			// connectionTimeout: 10000, // 10 seconds
 		}
     }),
-    // TwilioModule.forRoot({
-	// 	accountSid: process.env.TWILIO_ACCOUNT_SID,
-	// 	authToken: process.env.TWILIO_AUTH_TOKEN,
-    // }),
+    
   ],
     
   controllers: [UserController],

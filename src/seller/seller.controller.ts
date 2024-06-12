@@ -24,12 +24,13 @@ export class SellerController {
 				});
 
 			}catch(error){
-				return response.status(error.status).json({
+				return response.status(500).json({
 					status: 'error',
 					message: error.message,
-					error: error.response.error,
-					cause: error.name
+					error: error
+					// cause: error.name
 				});
+				// console.log(error)
 			}
 	}
 

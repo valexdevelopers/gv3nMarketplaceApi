@@ -6,6 +6,7 @@ import { JwtModule } from '@nestjs/jwt';
 import {JwtStrategyUser } from "../jwt/jwtStrategy.user"; 
 import { MailerModule } from '@nestjs-modules/mailer';
 import { TwilioModule } from 'nestjs-twilio';
+import { SendVerificationEmail } from '../emails/verification.mail';
 
 @Module({
   imports: [
@@ -35,7 +36,7 @@ import { TwilioModule } from 'nestjs-twilio';
   ],
     
   controllers: [UserController],
-  providers: [UserService, DatabaseService, JwtStrategyUser],
+	providers: [UserService, DatabaseService, JwtStrategyUser, SendVerificationEmail],
   
 })
 export class UserModule {}

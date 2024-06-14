@@ -5,6 +5,7 @@ import { UpdateSellerDto } from './dto/update-seller.dto';
 import { LoginSellerDto } from './dto/login-seller.dto';
 import {Request, Response} from 'express'; 
 import { EmailVerificationDto } from './dto/emailverification-seller.dto';
+import { JwtAuthGuard } from '../jwt/jwt-authguard'
 
 @Controller('seller')
 export class SellerController {
@@ -44,8 +45,8 @@ export class SellerController {
 			return response.status(201).json({
 				status: 'ok!',
 				message: 'You are logged in',
-				// token: authenticateUser[1],
-				data: authenticateUser
+				token: authenticateUser[1],
+				data: authenticateUser[0]
 				});
 
 		}catch(error){
@@ -58,6 +59,7 @@ export class SellerController {
 		}
 	}
 
+	@UseGuards(JwtAuthGuard)
 	@Post('verify')
 	async verifyEmail(@Body() emailVerificationDto: EmailVerificationDto, @Req() request:Request, @Res() response:Response){
 		try {

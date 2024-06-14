@@ -117,7 +117,7 @@ export class SellerService {
     //         })
     //    }
         const payload = {business_email: findSeller.business_email}
-        return findSeller
+        return [findSeller, this.jwtService.sign(payload)]
     }
 
 

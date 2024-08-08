@@ -83,3 +83,8 @@ enum UserType{
   User
   Admin
 }
+
+enum Language{
+  javascript
+  Java
+}

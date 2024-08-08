@@ -1,4 +1,5 @@
-import {IsEmail, IsNotEmpty, Length, IsStrongPassword, IsString, IsOptional, IsPostalCode, IsPhoneNumber, IsBooleanString} from "class-validator";
+/* eslint-disable prettier/prettier */
+import {IsEmail, IsNotEmpty, Length, IsStrongPassword, IsString} from "class-validator";
 import {confirmFieldDecorator} from "../../validations/confirm_field.decorator";
 
 export class CreateSellerDto {
@@ -7,16 +8,6 @@ export class CreateSellerDto {
     @IsString()
     @Length(3, 30)
     business_name: string
-
-    @IsNotEmpty()
-    @IsString()
-    @Length(3, 30)
-    firstname: string
-
-    @IsNotEmpty()
-    @IsString()
-    @Length(3, 30)
-    lastname: string
 
     @IsNotEmpty()
     @IsEmail()
@@ -37,45 +28,10 @@ export class CreateSellerDto {
     @confirmFieldDecorator('password')
     password_confirmation: string
 
-    @IsOptional()
+    @IsNotEmpty()
     @IsString()
-    business_address?: String
-
-    @IsOptional()
-    @IsString()
-    business_address_2?: String
-
-    @IsOptional()
-    @IsString()
-    business_city?: String
-
-    @IsOptional()
-    @IsString()
-    business_state?: String
-
-    @IsOptional()
-    @IsString()
-    business_country?: String
-
-    @IsOptional()
-    @IsPostalCode()
-    postal_code?: String
-
-    @IsOptional()
-    @IsPhoneNumber()
-    phone?: BigInt
-
-    @IsOptional()
-    @IsPhoneNumber()
-    phone_2?: BigInt
-
-    @IsOptional()
-    @IsBooleanString()
-    verified: Boolean
-
-    @IsOptional()
-    @IsBooleanString()
-    status: Boolean
+    @Length(6, 500)
+    residential_address: string
 }
 
 

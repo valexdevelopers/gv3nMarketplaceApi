@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {Controller, Get, Post, Body, Patch, Param, Delete, Req, Res, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -10,7 +11,7 @@ import {JwtAuthGuard} from '../jwt/jwt-authguard'
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-	@Post()
+	@Post('signup')
 	async create(@Body() createUserDto: CreateUserDto, @Req() request: Request, @Res() response: Response) {
 
 	 	try{

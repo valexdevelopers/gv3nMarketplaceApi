@@ -7,8 +7,6 @@ import { DatabaseService } from 'src/database/database.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { Prisma } from '@prisma/client';
-import { MailerService } from '@nestjs-modules/mailer';
-import {TwilioService } from 'nestjs-twilio';
 import {SendVerificationEmail} from '../emails/verification.mail';
 
 

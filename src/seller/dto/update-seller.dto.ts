@@ -1,4 +1,5 @@
+/* eslint-disable prettier/prettier */
 import { PartialType } from '@nestjs/mapped-types';
-import { CreateSellerDto } from './create-seller.dto';
+import { SellerAccountDto } from './seller-account.dto';
 
-export class UpdateSellerDto extends PartialType(CreateSellerDto) {}
+export class UpdateSellerDto extends PartialType(SellerAccountDto) {}

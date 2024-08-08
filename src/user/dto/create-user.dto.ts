@@ -1,27 +1,20 @@
-import {IsEmail, IsInt, IsNotEmpty, Length, IsDate} from 'class-validator';
-
+/* eslint-disable prettier/prettier */
+import { IsEmail, IsNotEmpty, Length } from 'class-validator';
+import { confirmFieldDecorator } from '../../validations/confirm_field.decorator';
 export class CreateUserDto {
+  @IsEmail()
+  @Length(6, 100)
+  email: string;
 
-    @IsEmail()
-    @Length(6, 100)
-    email: string
+  @Length(2, 50)
+  @IsNotEmpty()
+  name: string;
 
-    @Length(2, 50)
-    @IsNotEmpty()
-    name:string
+  @Length(10, 20)
+  @IsNotEmpty()
+  password: string;
 
-
-    @Length(10, 20)
-    @IsNotEmpty()
-    password: string
-
-    @IsInt()
-    age: number
-
-    @IsDate()
-    created_at: Date
-
-    @IsDate()
-    deleted_at: Date
+  @confirmFieldDecorator('password')
+  password_confirmation: string;
 
 }
